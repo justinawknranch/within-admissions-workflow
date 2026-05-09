@@ -350,6 +350,24 @@
     font-weight: 400;
   }
 
+  /* Photo-background slides — light text on dark photo */
+  .reveal section.photo-bg-slide h1,
+  .reveal section.photo-bg-slide h2,
+  .reveal section.photo-bg-slide h3 { color: #fbf8f3 !important; }
+
+  .reveal section.photo-bg-slide p,
+  .reveal section.photo-bg-slide .subtitle,
+  .reveal section.photo-bg-slide .lead { color: rgba(251, 248, 243, 0.94) !important; }
+
+  .reveal section.photo-bg-slide .eyebrow { color: rgba(232, 226, 215, 0.92) !important; }
+
+  .reveal section.photo-bg-slide .cover-mark { color: rgba(251, 248, 243, 0.92) !important; }
+
+  .reveal section.photo-bg-slide .footer-mark { color: rgba(251, 248, 243, 0.85) !important; }
+
+  /* Hide background topo SVG on slides that have their own photo bg
+     (reveal.js slide-background already covers it, but make it explicit) */
+
   @media print {
     .reveal .slides section { background: var(--bg); }
     .topo-bg { display: none; }
@@ -377,7 +395,7 @@
     <div class="slides">
 
       <!-- Slide 1: Cover -->
-      <section class="cover">
+      <section class="cover photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.45), rgba(20,30,30,0.78)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&amp;q=80') center/cover">
         <svg class="cover-mark" viewBox="0 0 64 64" aria-hidden="true">
           <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
           <line x1="6" y1="42" x2="58" y2="42" stroke="currentColor" stroke-width="1.5"/>
@@ -389,7 +407,7 @@
       </section>
 
       <!-- Slide 2: Why this matters -->
-      <section>
+      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.55), rgba(20,30,30,0.82)), url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&amp;q=80') center/cover">
         <div class="eyebrow">Why This Matters</div>
         <h2>You are the front door.</h2>
         <p class="lead">As the day's admissions advisor, you are the first AWKN team member to hold space for someone who has just taken a hard step to reach out.</p>
@@ -472,7 +490,7 @@
         <table>
           <thead>
             <tr>
-              <th>Lead received</th>
+              <th>Form received</th>
               <th>Response is due</th>
             </tr>
           </thead>
@@ -567,12 +585,12 @@
       </section>
 
       <!-- Slide 14: Closing -->
-      <section class="closing">
+      <section class="closing photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.5), rgba(20,30,30,0.78)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&amp;q=80') center/cover">
         <div class="eyebrow">The Front Door</div>
         <h2>Meet them in the moment.</h2>
         <p>The people reaching out to us are often in a fragile, hesitant moment. They have decided, today, to take a step.</p>
         <p>Our job is to meet them there — quickly, warmly, and prepared.</p>
-        <p style="margin-top: 48px; color: var(--accent); font-family: Georgia, serif; font-size: 26px; letter-spacing: 0.05em;">Thank you for taking that seriously.</p>
+        <p style="margin-top: 48px; font-family: Georgia, serif; font-size: 26px; letter-spacing: 0.05em;">Thank you for taking that seriously.</p>
         <div class="footer-mark">WITHIN CENTER</div>
       </section>
 
