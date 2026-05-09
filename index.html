@@ -459,6 +459,27 @@
 
   .reveal section.photo-bg-slide .footer-mark { color: rgba(251, 248, 243, 0.85) !important; }
 
+  /* Translucent panel behind text content on photo slides */
+  .reveal section.photo-bg-slide .content-panel {
+    background: rgba(20, 30, 30, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 48px 56px;
+    border-radius: 18px;
+    border: 1px solid rgba(248, 245, 239, 0.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .reveal section.photo-bg-slide.cover .content-panel,
+  .reveal section.photo-bg-slide.closing .content-panel {
+    display: inline-block;
+    text-align: center;
+    max-width: 92%;
+  }
+
+  /* Allow strong elements to use accent color over photo */
+  .reveal section.photo-bg-slide strong { color: #fbf8f3 !important; }
+
   /* Hide background topo SVG on slides that have their own photo bg
      (reveal.js slide-background already covers it, but make it explicit) */
 
@@ -489,23 +510,27 @@
     <div class="slides">
 
       <!-- Slide 1: Cover -->
-      <section class="cover photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.35), rgba(20,30,30,0.68)), url('images/twilight.jpg') center/cover">
-        <svg class="cover-mark" viewBox="0 0 64 64" aria-hidden="true">
-          <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="6" y1="42" x2="58" y2="42" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="32" cy="22" r="6" fill="currentColor" opacity="0.85"/>
-        </svg>
-        <div class="eyebrow">Within Center · Internal Workflow</div>
-        <h1>The New Admissions<br/>&amp; Sales Workflow</h1>
-        <p class="subtitle">How we hold space for the people who reach out — and how we make sure no one waits in silence.</p>
+      <section class="cover photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.2), rgba(20,30,30,0.4)), url('images/hammocks.jpg') center/cover">
+        <div class="content-panel">
+          <svg class="cover-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="6" y1="42" x2="58" y2="42" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="32" cy="22" r="6" fill="currentColor" opacity="0.85"/>
+          </svg>
+          <div class="eyebrow">Within Center · Internal Workflow</div>
+          <h1>The New Admissions<br/>&amp; Sales Workflow</h1>
+          <p class="subtitle">How we hold space for the people who reach out — and how we make sure no one waits in silence.</p>
+        </div>
       </section>
 
       <!-- Slide 2: Why this matters -->
-      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.5), rgba(20,30,30,0.78)), url('images/hammocks.jpg') center/cover">
-        <div class="eyebrow">Why This Matters</div>
-        <h2>You are the front door.</h2>
-        <p class="lead">As the day's admissions advisor, you are the first Within Team member to hold space for someone who has just taken a hard step to reach out.</p>
-        <p>Most people who contact us have been thinking about it for weeks or months. That first interaction sets the tone for everything that follows.</p>
+      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.25), rgba(20,30,30,0.45)), url('images/wc-img0432.jpg') center/cover">
+        <div class="content-panel">
+          <div class="eyebrow">Why This Matters</div>
+          <h2>You are the front door.</h2>
+          <p class="lead">As the day's admissions advisor, you are the first Within Team member to hold space for someone who has just taken a hard step to reach out.</p>
+          <p>Most people who contact us have been thinking about it for weeks or months. That first interaction sets the tone for everything that follows.</p>
+        </div>
       </section>
 
       <!-- Slide 3: Coverage -->
@@ -603,14 +628,16 @@
       </section>
 
       <!-- Slide 6: Why 15 minutes -->
-      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.55), rgba(20,30,30,0.78)), url('images/tray.jpg') center/cover">
-        <div class="eyebrow">Why 15 Minutes</div>
-        <h2>The willingness window.</h2>
-        <div class="callout">
-          <span class="label">Industry data</span>
-          The first 15 minutes after a lead reaches out is the window where they are <strong>most willing to engage and move forward</strong>. After that, willingness drops sharply — a lead contacted at 30 minutes is significantly less likely to convert than one contacted at 5, and by the 1–2 hour mark you're often re-earning attention you already had.
+      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.3), rgba(20,30,30,0.5)), url('images/tray.jpg') center/cover">
+        <div class="content-panel">
+          <div class="eyebrow">Why 15 Minutes</div>
+          <h2>The willingness window.</h2>
+          <div class="callout">
+            <span class="label">Industry data</span>
+            The first 15 minutes after a lead reaches out is the window where they are <strong>most willing to engage and move forward</strong>. After that, willingness drops sharply — a lead contacted at 30 minutes is significantly less likely to convert than one contacted at 5, and by the 1–2 hour mark you're often re-earning attention you already had.
+          </div>
+          <p>Speed isn't about being pushy — it's about meeting people in the exact moment they decided to take action.</p>
         </div>
-        <p>Speed isn't about being pushy — it's about meeting people in the exact moment they decided to take action.</p>
       </section>
 
       <!-- Slide 7: Auto-confirmation messages -->
@@ -640,11 +667,13 @@
       </section>
 
       <!-- Slide 8: Calendly -->
-      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.5), rgba(20,30,30,0.75)), url('images/yurts.jpg') center/cover">
-        <div class="eyebrow">03 · Calendly Meetings</div>
-        <h2>Next-day bookings only.</h2>
-        <p>Calendly is configured so meetings can only be booked starting the <strong>next day</strong> — no same-day bookings.</p>
-        <p>Each morning you'll see the day's calls already on the schedule. Take those meetings prepared and on time, with the lead's CRM record open in front of you.</p>
+      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.25), rgba(20,30,30,0.45)), url('images/yurts.jpg') center/cover">
+        <div class="content-panel">
+          <div class="eyebrow">03 · Calendly Meetings</div>
+          <h2>Next-day bookings only.</h2>
+          <p>Calendly is configured so meetings can only be booked starting the <strong>next day</strong> — no same-day bookings.</p>
+          <p>Each morning you'll see the day's calls already on the schedule. Take those meetings prepared and on time, with the lead's CRM record open in front of you.</p>
+        </div>
       </section>
 
       <!-- Slide 8: CRM -->
@@ -697,20 +726,24 @@
       </section>
 
       <!-- Slide 13: Weekly Reviews -->
-      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.6), rgba(20,30,30,0.85)), url('images/temple-room.jpg') center/cover">
-        <div class="eyebrow">09 · Weekly Funnel Reviews</div>
-        <h2>We tighten this together.</h2>
-        <p>William and I will schedule <strong>weekly team funnel reviews</strong> with the team. We'll look at lead volume, response times, conversion through each stage, and anything getting stuck.</p>
-        <p class="small">Bring questions, friction points, and patterns you're seeing. These are working sessions — the goal is to keep tightening the workflow together.</p>
+      <section class="photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.3), rgba(20,30,30,0.5)), url('images/temple-room.jpg') center/cover">
+        <div class="content-panel">
+          <div class="eyebrow">09 · Weekly Funnel Reviews</div>
+          <h2>We tighten this together.</h2>
+          <p>William and I will schedule <strong>weekly team funnel reviews</strong> with the team. We'll look at lead volume, response times, conversion through each stage, and anything getting stuck.</p>
+          <p class="small">Bring questions, friction points, and patterns you're seeing. These are working sessions — the goal is to keep tightening the workflow together.</p>
+        </div>
       </section>
 
       <!-- Slide 14: Closing -->
-      <section class="closing photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.45), rgba(20,30,30,0.75)), url('images/firepit.jpg') center/cover">
-        <div class="eyebrow">The Front Door</div>
-        <h2>Meet them in the moment.</h2>
-        <p>The people reaching out to us are often in a fragile, hesitant moment. They have decided, today, to take a step.</p>
-        <p>Our job is to meet them there — quickly, warmly, and prepared.</p>
-        <p style="margin-top: 48px; font-family: Georgia, serif; font-size: 26px; letter-spacing: 0.05em;">Thank you for taking that seriously.</p>
+      <section class="closing photo-bg-slide" data-background="linear-gradient(rgba(20,30,30,0.25), rgba(20,30,30,0.45)), url('images/firepit.jpg') center/cover">
+        <div class="content-panel">
+          <div class="eyebrow">The Front Door</div>
+          <h2>Meet them in the moment.</h2>
+          <p>The people reaching out to us are often in a fragile, hesitant moment. They have decided, today, to take a step.</p>
+          <p>Our job is to meet them there — quickly, warmly, and prepared.</p>
+          <p style="margin-top: 48px; font-family: Georgia, serif; font-size: 26px; letter-spacing: 0.05em;">Thank you for taking that seriously.</p>
+        </div>
       </section>
 
     </div>
