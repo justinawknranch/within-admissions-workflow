@@ -350,6 +350,100 @@
     font-weight: 400;
   }
 
+  /* Message preview cards (auto-confirmation slide) */
+  .message-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 36px 0 16px;
+  }
+
+  .message-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 28px 30px 30px;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(31,42,46,0.04), 0 6px 18px rgba(31,42,46,0.05);
+  }
+
+  .message-card .trigger-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .message-card.after-hours .trigger-label { color: var(--highlight); }
+
+  .message-card .trigger-time {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .message-card .sender {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .message-card .sender-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .message-card.after-hours .sender-dot { background: var(--highlight); }
+
+  .message-bubble {
+    background: var(--accent-soft);
+    border-radius: 18px;
+    padding: 22px 24px;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .message-card.after-hours .message-bubble { background: var(--highlight-soft); }
+
+  .message-bubble .name { color: var(--ink); }
+
+  .channel-note {
+    margin-top: 28px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--ink-soft);
+  }
+
+  .channel-note .channel-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 99px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 4px;
+  }
+
+  .channel-note .channel-pill.coming { background: var(--highlight-soft); color: var(--highlight); }
+
   /* Photo-background slides — light text on dark photo */
   .reveal section.photo-bg-slide h1,
   .reveal section.photo-bg-slide h2,
@@ -519,7 +613,33 @@
         <p>Speed isn't about being pushy — it's about meeting people in the exact moment they decided to take action.</p>
       </section>
 
-      <!-- Slide 7: Calendly -->
+      <!-- Slide 7: Auto-confirmation messages -->
+      <section>
+        <div class="eyebrow">What the Lead Receives</div>
+        <h2>The auto-confirmation message.</h2>
+        <p class="small">Every form submission triggers an instant confirmation so no one waits in silence.</p>
+        <div class="message-grid">
+          <div class="message-card">
+            <span class="trigger-label">Business Hours</span>
+            <div class="trigger-time">Submitted 9am – 5pm (any day)</div>
+            <div class="sender"><span class="sender-dot"></span>Within Center</div>
+            <div class="message-bubble">
+              Hi <span class="name">[First Name]</span>, this is Within Center, we received your message and one of our admissions advisors will reach out personally <strong>within the next 1–2 hours</strong>.
+            </div>
+          </div>
+          <div class="message-card after-hours">
+            <span class="trigger-label">After Hours</span>
+            <div class="trigger-time">Submitted after 5pm or before 9am</div>
+            <div class="sender"><span class="sender-dot"></span>Within Center</div>
+            <div class="message-bubble">
+              Hi <span class="name">[First Name]</span>, this is Within Center, we received your message and one of our admissions advisors will reach out personally <strong>by 10am tomorrow</strong>. We're glad you reached out.
+            </div>
+          </div>
+        </div>
+        <p class="channel-note">Sent today via <span class="channel-pill">Email</span> · <span class="channel-pill coming">Text — Coming Soon</span></p>
+      </section>
+
+      <!-- Slide 8: Calendly -->
       <section>
         <div class="eyebrow">03 · Calendly Meetings</div>
         <h2>Next-day bookings only.</h2>
