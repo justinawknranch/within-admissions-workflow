@@ -14,9 +14,11 @@
     --ink-soft: #4a5a5f;
     --muted: #8a9499;
     --accent: #2f5d54;
+    --accent-deep: #1f4039;
     --accent-soft: #d6e3df;
     --accent-line: #b9cdc6;
     --highlight: #b8895c;
+    --highlight-soft: #f0e2d2;
     --rule: #e8e2d7;
   }
 
@@ -24,6 +26,20 @@
     background: var(--bg);
     color: var(--ink);
   }
+
+  /* Topographic SVG pattern — subtle, behind everything */
+  .topo-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    color: var(--accent);
+    opacity: 0.06;
+  }
+
+  .reveal { position: relative; z-index: 1; }
 
   .reveal {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
@@ -33,9 +49,7 @@
     letter-spacing: -0.005em;
   }
 
-  .reveal .slides {
-    text-align: left;
-  }
+  .reveal .slides { text-align: left; }
 
   .reveal .slides > section,
   .reveal .slides > section > section {
@@ -52,20 +66,9 @@
     line-height: 1.15;
   }
 
-  .reveal h1 {
-    font-size: 84px;
-  }
-
-  .reveal h2 {
-    font-size: 56px;
-    color: var(--accent);
-  }
-
-  .reveal h3 {
-    font-size: 38px;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
+  .reveal h1 { font-size: 84px; }
+  .reveal h2 { font-size: 56px; color: var(--accent); }
+  .reveal h3 { font-size: 38px; color: var(--accent); margin-bottom: 16px; }
 
   .reveal p {
     font-size: 28px;
@@ -74,16 +77,8 @@
     max-width: 1000px;
   }
 
-  .reveal p.lead {
-    font-size: 34px;
-    color: var(--ink-soft);
-    line-height: 1.4;
-  }
-
-  .reveal p.small {
-    font-size: 22px;
-    color: var(--ink-soft);
-  }
+  .reveal p.lead { font-size: 34px; color: var(--ink-soft); line-height: 1.4; }
+  .reveal p.small { font-size: 22px; color: var(--ink-soft); }
 
   .reveal strong { color: var(--ink); font-weight: 600; }
   .reveal em { color: var(--ink); font-style: italic; }
@@ -133,6 +128,7 @@
     overflow: hidden;
     width: 100%;
     font-size: 26px;
+    background: var(--surface);
   }
 
   .reveal table th {
@@ -189,6 +185,86 @@
     letter-spacing: 0.1em;
   }
 
+  /* Schedule grid */
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin: 36px 0 16px;
+  }
+
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 18px 8px 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .day-card.weekend { background: #f4efe6; }
+  .day-card.weekend::before { background: var(--highlight); }
+
+  .day-card .day-label {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 6px 0 4px;
+  }
+
+  .day-card.weekend .day-label { color: var(--highlight); }
+
+  .day-card .date {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 18px;
+  }
+
+  .day-card .advisor {
+    font-size: 18px;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .schedule-legend {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 24px;
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+
+  .schedule-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .schedule-legend span::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .schedule-legend span.weekend::before { background: var(--highlight); }
+
   .callout {
     background: #f4efe6;
     border-left: 5px solid var(--highlight);
@@ -212,6 +288,7 @@
 
   .cover {
     text-align: center;
+    position: relative;
   }
 
   .cover h1 {
@@ -227,9 +304,15 @@
     text-align: center;
   }
 
-  .closing {
-    text-align: center;
+  .cover-mark {
+    display: block;
+    margin: 0 auto 24px;
+    width: 64px;
+    height: 64px;
+    color: var(--accent);
   }
+
+  .closing { text-align: center; }
 
   .closing h2 {
     font-size: 64px;
@@ -244,15 +327,8 @@
     color: var(--ink-soft);
   }
 
-  .reveal .progress {
-    color: var(--accent);
-    height: 4px;
-  }
-
-  .reveal .controls {
-    color: var(--accent);
-  }
-
+  .reveal .progress { color: var(--accent); height: 4px; }
+  .reveal .controls { color: var(--accent); }
   .reveal .slide-number {
     background: transparent;
     color: var(--muted);
@@ -274,18 +350,39 @@
     font-weight: 400;
   }
 
-  /* Print / PDF export friendliness */
   @media print {
     .reveal .slides section { background: var(--bg); }
+    .topo-bg { display: none; }
   }
 </style>
 </head>
 <body>
+
+  <!-- Topographic background motif -->
+  <svg class="topo-bg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.2" fill="none">
+      <path d="M -50 220 C 200 180, 400 250, 700 220 S 1100 180, 1400 220 S 1700 250, 1700 220"/>
+      <path d="M -50 270 C 200 230, 400 300, 700 270 S 1100 230, 1400 270 S 1700 300, 1700 270"/>
+      <path d="M -50 320 C 200 280, 400 350, 700 320 S 1100 280, 1400 320 S 1700 350, 1700 320"/>
+      <path d="M -50 380 C 220 340, 420 410, 720 380 S 1120 340, 1420 380 S 1720 410, 1720 380"/>
+      <path d="M -50 450 C 220 400, 440 480, 740 450 S 1140 400, 1440 450 S 1740 480, 1740 450"/>
+      <path d="M -50 530 C 240 470, 460 560, 760 530 S 1160 470, 1460 530 S 1760 560, 1760 530"/>
+      <path d="M -50 620 C 260 550, 480 650, 780 620 S 1180 550, 1480 620 S 1780 650, 1780 620"/>
+      <path d="M -50 720 C 280 640, 500 750, 800 720 S 1200 640, 1500 720 S 1800 750, 1800 720"/>
+      <path d="M -50 820 C 300 730, 520 850, 820 820 S 1220 730, 1520 820 S 1820 850, 1820 820"/>
+    </g>
+  </svg>
+
   <div class="reveal">
     <div class="slides">
 
       <!-- Slide 1: Cover -->
       <section class="cover">
+        <svg class="cover-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="6" y1="42" x2="58" y2="42" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="32" cy="22" r="6" fill="currentColor" opacity="0.85"/>
+        </svg>
         <div class="eyebrow">Within Center · Internal Workflow</div>
         <h1>The New Admissions<br/>&amp; Sales Workflow</h1>
         <p class="subtitle">How we hold space for the people who reach out — and how we make sure no one waits in silence.</p>
@@ -303,14 +400,14 @@
       <section>
         <div class="eyebrow">01 · Coverage</div>
         <h2>Seven days. One advisor on duty.</h2>
-        <p>The three of us rotate to cover the week. Your assigned days are the days you own end-to-end.</p>
+        <p>Our team rotates to cover the full week. Your assigned days are the days you own end-to-end.</p>
         <div class="stat-grid">
           <div class="stat">
             <div class="num-big">7</div>
             <div class="label-small">Days a week</div>
           </div>
           <div class="stat">
-            <div class="num-big">3</div>
+            <div class="num-big">4</div>
             <div class="label-small">Rotating advisors</div>
           </div>
           <div class="stat">
@@ -320,7 +417,54 @@
         </div>
       </section>
 
-      <!-- Slide 4: Response time -->
+      <!-- Slide 4: Schedule -->
+      <section>
+        <div class="eyebrow">Next Week · May 11 – 17, 2026</div>
+        <h2>Who's on duty.</h2>
+        <div class="schedule-grid">
+          <div class="day-card">
+            <div class="day-label">Mon</div>
+            <div class="date">11</div>
+            <div class="advisor">Jeri</div>
+          </div>
+          <div class="day-card">
+            <div class="day-label">Tue</div>
+            <div class="date">12</div>
+            <div class="advisor">Leslie</div>
+          </div>
+          <div class="day-card">
+            <div class="day-label">Wed</div>
+            <div class="date">13</div>
+            <div class="advisor">Cristina</div>
+          </div>
+          <div class="day-card">
+            <div class="day-label">Thu</div>
+            <div class="date">14</div>
+            <div class="advisor">Leslie</div>
+          </div>
+          <div class="day-card">
+            <div class="day-label">Fri</div>
+            <div class="date">15</div>
+            <div class="advisor">Lauren</div>
+          </div>
+          <div class="day-card weekend">
+            <div class="day-label">Sat</div>
+            <div class="date">16</div>
+            <div class="advisor">Jeri</div>
+          </div>
+          <div class="day-card weekend">
+            <div class="day-label">Sun</div>
+            <div class="date">17</div>
+            <div class="advisor">Cristina</div>
+          </div>
+        </div>
+        <div class="schedule-legend">
+          <span>Weekday</span>
+          <span class="weekend">Weekend</span>
+        </div>
+      </section>
+
+      <!-- Slide 5: Response time -->
       <section>
         <div class="eyebrow">02 · Response Time</div>
         <h2>The standard, not the goal.</h2>
@@ -345,7 +489,7 @@
         <p class="small">The auto-confirmation text and email going out to every lead promises a fast, personal response. Missing these windows breaks a commitment we've already made.</p>
       </section>
 
-      <!-- Slide 5: Why 15 minutes -->
+      <!-- Slide 6: Why 15 minutes -->
       <section>
         <div class="eyebrow">Why 15 Minutes</div>
         <h2>The willingness window.</h2>
@@ -356,7 +500,7 @@
         <p>Speed isn't about being pushy — it's about meeting people in the exact moment they decided to take action.</p>
       </section>
 
-      <!-- Slide 6: Calendly -->
+      <!-- Slide 7: Calendly -->
       <section>
         <div class="eyebrow">03 · Calendly Meetings</div>
         <h2>Next-day bookings only.</h2>
@@ -364,7 +508,7 @@
         <p>Each morning you'll see the day's calls already on the schedule. Take those meetings prepared and on time, with the lead's CRM record open in front of you.</p>
       </section>
 
-      <!-- Slide 7: CRM -->
+      <!-- Slide 8: CRM -->
       <section>
         <div class="eyebrow">04 · AWKN Team Portal</div>
         <h2>The CRM is the source of truth.</h2>
@@ -376,7 +520,7 @@
         <p class="small"><em>If it's not in the CRM, it didn't happen.</em></p>
       </section>
 
-      <!-- Slide 8: Notifications -->
+      <!-- Slide 9: Notifications -->
       <section>
         <div class="eyebrow">05 · Notifications</div>
         <h2>Texts to the on-duty advisor.</h2>
@@ -384,7 +528,7 @@
         <p class="small">Coming soon. In the meantime, keep the inbox, CRM, and Slack actively monitored throughout your shift so nothing slips past 15 minutes.</p>
       </section>
 
-      <!-- Slide 9: On Duty -->
+      <!-- Slide 10: On Duty -->
       <section>
         <div class="eyebrow">06 · What "On Duty" Means</div>
         <h2>On your assigned day:</h2>
@@ -397,7 +541,7 @@
         </ul>
       </section>
 
-      <!-- Slide 10: Handoffs -->
+      <!-- Slide 11: Handoffs -->
       <section>
         <div class="eyebrow">07 · Handoffs</div>
         <h2>Clear ownership, every morning.</h2>
@@ -405,23 +549,23 @@
         <p>Check the CRM first thing — don't assume the prior advisor handled it. If you're handing off an active conversation, leave a clear note in the lead record so the next advisor isn't starting cold.</p>
       </section>
 
-      <!-- Slide 11: Coverage exceptions -->
+      <!-- Slide 12: Coverage exceptions -->
       <section>
         <div class="eyebrow">08 · If You Can't Cover Your Day</div>
         <h2>Confirm coverage before you step away.</h2>
-        <p>If you're sick, have an emergency, or need to swap a day — contact the other two advisors <em>and</em> me as early as possible.</p>
+        <p>If you're sick, have an emergency, or need to swap a day — contact the other advisors <em>and</em> me as early as possible.</p>
         <p>Do not assume coverage is handled until someone has explicitly accepted the day. A missed day with no advisor on duty is the worst-case scenario — leads sit, the SLA breaks, and we lose people who were ready to say yes.</p>
       </section>
 
-      <!-- Slide 12: Weekly Reviews -->
+      <!-- Slide 13: Weekly Reviews -->
       <section>
         <div class="eyebrow">09 · Weekly Funnel Reviews</div>
         <h2>We tighten this together.</h2>
-        <p>William and I will schedule <strong>weekly team funnel reviews</strong> with the three of you. We'll look at lead volume, response times, conversion through each stage, and anything getting stuck.</p>
+        <p>William and I will schedule <strong>weekly team funnel reviews</strong> with the team. We'll look at lead volume, response times, conversion through each stage, and anything getting stuck.</p>
         <p class="small">Bring questions, friction points, and patterns you're seeing. These are working sessions — the goal is to keep tightening the workflow together.</p>
       </section>
 
-      <!-- Slide 13: Closing -->
+      <!-- Slide 14: Closing -->
       <section class="closing">
         <div class="eyebrow">The Front Door</div>
         <h2>Meet them in the moment.</h2>
