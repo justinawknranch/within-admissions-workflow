@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Within Center — New Admissions / Sales Workflow</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+<style>
+  :root {
+    --bg: #fbf8f3;
+    --surface: #ffffff;
+    --ink: #1f2a2e;
+    --ink-soft: #4a5a5f;
+    --muted: #8a9499;
+    --accent: #2f5d54;
+    --accent-soft: #d6e3df;
+    --accent-line: #b9cdc6;
+    --highlight: #b8895c;
+    --rule: #e8e2d7;
+  }
+
+  html, body, .reveal {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  .reveal {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+  }
+
+  .reveal .slides {
+    text-align: left;
+  }
+
+  .reveal .slides > section,
+  .reveal .slides > section > section {
+    padding: 0 40px;
+  }
+
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+    font-family: Georgia, "Iowan Old Style", "Apple Garamond", serif;
+    font-weight: 400;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+    line-height: 1.15;
+  }
+
+  .reveal h1 {
+    font-size: 84px;
+  }
+
+  .reveal h2 {
+    font-size: 56px;
+    color: var(--accent);
+  }
+
+  .reveal h3 {
+    font-size: 38px;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .reveal p {
+    font-size: 28px;
+    color: var(--ink);
+    margin: 0 0 18px;
+    max-width: 1000px;
+  }
+
+  .reveal p.lead {
+    font-size: 34px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .reveal p.small {
+    font-size: 22px;
+    color: var(--ink-soft);
+  }
+
+  .reveal strong { color: var(--ink); font-weight: 600; }
+  .reveal em { color: var(--ink); font-style: italic; }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 32px;
+    font-family: -apple-system, sans-serif;
+  }
+
+  .reveal ul {
+    list-style: none;
+    margin: 24px 0;
+    padding: 0;
+    display: block;
+  }
+
+  .reveal ul li {
+    position: relative;
+    padding-left: 38px;
+    margin-bottom: 18px;
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .reveal ul li::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 16px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .reveal table {
+    margin: 24px 0;
+    border-collapse: collapse;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    font-size: 26px;
+  }
+
+  .reveal table th {
+    background: #f4efe6;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 24px;
+    text-align: left;
+    border: none;
+  }
+
+  .reveal table td {
+    padding: 22px 24px;
+    border-top: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--ink);
+  }
+
+  .reveal table td.due {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 40px 0 16px;
+  }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 36px 24px;
+    text-align: center;
+  }
+
+  .stat .num-big {
+    font-family: Georgia, serif;
+    font-size: 96px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .stat .label-small {
+    font-size: 18px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .callout {
+    background: #f4efe6;
+    border-left: 5px solid var(--highlight);
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin: 32px 0 8px;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .callout .label {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 14px;
+    color: var(--highlight);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .cover {
+    text-align: center;
+  }
+
+  .cover h1 {
+    margin-top: 24px;
+    font-size: 76px;
+  }
+
+  .cover .subtitle {
+    font-size: 26px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 24px auto 0;
+    text-align: center;
+  }
+
+  .closing {
+    text-align: center;
+  }
+
+  .closing h2 {
+    font-size: 64px;
+    margin-bottom: 32px;
+  }
+
+  .closing p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    color: var(--ink-soft);
+  }
+
+  .reveal .progress {
+    color: var(--accent);
+    height: 4px;
+  }
+
+  .reveal .controls {
+    color: var(--accent);
+  }
+
+  .reveal .slide-number {
+    background: transparent;
+    color: var(--muted);
+    font-family: -apple-system, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-mark {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: Georgia, serif;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* Print / PDF export friendliness */
+  @media print {
+    .reveal .slides section { background: var(--bg); }
+  }
+</style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Cover -->
+      <section class="cover">
+        <div class="eyebrow">Within Center · Internal Workflow</div>
+        <h1>The New Admissions<br/>&amp; Sales Workflow</h1>
+        <p class="subtitle">How we hold space for the people who reach out — and how we make sure no one waits in silence.</p>
+      </section>
+
+      <!-- Slide 2: Why this matters -->
+      <section>
+        <div class="eyebrow">Why This Matters</div>
+        <h2>You are the front door.</h2>
+        <p class="lead">As the day's admissions advisor, you are the first AWKN team member to hold space for someone who has just taken a hard step to reach out.</p>
+        <p>Most people who contact us have been thinking about it for weeks or months. That first interaction sets the tone for everything that follows.</p>
+      </section>
+
+      <!-- Slide 3: Coverage -->
+      <section>
+        <div class="eyebrow">01 · Coverage</div>
+        <h2>Seven days. One advisor on duty.</h2>
+        <p>The three of us rotate to cover the week. Your assigned days are the days you own end-to-end.</p>
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="num-big">7</div>
+            <div class="label-small">Days a week</div>
+          </div>
+          <div class="stat">
+            <div class="num-big">3</div>
+            <div class="label-small">Rotating advisors</div>
+          </div>
+          <div class="stat">
+            <div class="num-big">1</div>
+            <div class="label-small">On-duty per day</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Response time -->
+      <section>
+        <div class="eyebrow">02 · Response Time</div>
+        <h2>The standard, not the goal.</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Lead received</th>
+              <th>Response is due</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9am – 6pm (your shift day)</td>
+              <td class="due">Ideally 15 min · Max 2 hours</td>
+            </tr>
+            <tr>
+              <td>After 6pm or before 9am</td>
+              <td class="due">By 10am the next morning</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="small">The auto-confirmation text and email going out to every lead promises a fast, personal response. Missing these windows breaks a commitment we've already made.</p>
+      </section>
+
+      <!-- Slide 5: Why 15 minutes -->
+      <section>
+        <div class="eyebrow">Why 15 Minutes</div>
+        <h2>The willingness window.</h2>
+        <div class="callout">
+          <span class="label">Industry data</span>
+          The first 15 minutes after a lead reaches out is the window where they are <strong>most willing to engage and move forward</strong>. After that, willingness drops sharply — a lead contacted at 30 minutes is significantly less likely to convert than one contacted at 5, and by the 1–2 hour mark you're often re-earning attention you already had.
+        </div>
+        <p>Speed isn't about being pushy — it's about meeting people in the exact moment they decided to take action.</p>
+      </section>
+
+      <!-- Slide 6: Calendly -->
+      <section>
+        <div class="eyebrow">03 · Calendly Meetings</div>
+        <h2>Next-day bookings only.</h2>
+        <p>Calendly is configured so meetings can only be booked starting the <strong>next day</strong> — no same-day bookings.</p>
+        <p>Each morning you'll see the day's calls already on the schedule. Take those meetings prepared and on time, with the lead's CRM record open in front of you.</p>
+      </section>
+
+      <!-- Slide 7: CRM -->
+      <section>
+        <div class="eyebrow">04 · AWKN Team Portal</div>
+        <h2>The CRM is the source of truth.</h2>
+        <ul>
+          <li><strong>Form leads</strong> automatically push into the CRM. Claim the lead as you reach out — so we know who is working what.</li>
+          <li><strong>Calendly bookings</strong> (10am–6pm window): until auto-push is live, manually enter the lead into the CRM <em>before</em> the call.</li>
+          <li><strong>Outreach activity</strong> — log every call, text, email, and voicemail in the lead record before end of day.</li>
+        </ul>
+        <p class="small"><em>If it's not in the CRM, it didn't happen.</em></p>
+      </section>
+
+      <!-- Slide 8: Notifications -->
+      <section>
+        <div class="eyebrow">05 · Notifications</div>
+        <h2>Texts to the on-duty advisor.</h2>
+        <p>We're building a feature that will <strong>text the on-duty admissions advisor</strong> whenever a new contact form is submitted — so you don't have to refresh the inbox or CRM to catch leads.</p>
+        <p class="small">Coming soon. In the meantime, keep the inbox, CRM, and Slack actively monitored throughout your shift so nothing slips past 15 minutes.</p>
+      </section>
+
+      <!-- Slide 9: On Duty -->
+      <section>
+        <div class="eyebrow">06 · What "On Duty" Means</div>
+        <h2>On your assigned day:</h2>
+        <ul>
+          <li>Monitor the shared inbox, CRM, and Slack throughout 9am–6pm</li>
+          <li>Respond to form leads within 15 minutes (max 2 hours) during 9am–6pm</li>
+          <li>Take all Calendly meetings booked for the day, prepared with the CRM open</li>
+          <li>Handle leads that came in overnight before 9am — response due by 10am</li>
+          <li>Log all outreach in the CRM before the day ends</li>
+        </ul>
+      </section>
+
+      <!-- Slide 10: Handoffs -->
+      <section>
+        <div class="eyebrow">07 · Handoffs</div>
+        <h2>Clear ownership, every morning.</h2>
+        <p>If a lead came in after 6pm the prior evening, the <strong>next day's advisor</strong> owns the 10am response.</p>
+        <p>Check the CRM first thing — don't assume the prior advisor handled it. If you're handing off an active conversation, leave a clear note in the lead record so the next advisor isn't starting cold.</p>
+      </section>
+
+      <!-- Slide 11: Coverage exceptions -->
+      <section>
+        <div class="eyebrow">08 · If You Can't Cover Your Day</div>
+        <h2>Confirm coverage before you step away.</h2>
+        <p>If you're sick, have an emergency, or need to swap a day — contact the other two advisors <em>and</em> me as early as possible.</p>
+        <p>Do not assume coverage is handled until someone has explicitly accepted the day. A missed day with no advisor on duty is the worst-case scenario — leads sit, the SLA breaks, and we lose people who were ready to say yes.</p>
+      </section>
+
+      <!-- Slide 12: Weekly Reviews -->
+      <section>
+        <div class="eyebrow">09 · Weekly Funnel Reviews</div>
+        <h2>We tighten this together.</h2>
+        <p>William and I will schedule <strong>weekly team funnel reviews</strong> with the three of you. We'll look at lead volume, response times, conversion through each stage, and anything getting stuck.</p>
+        <p class="small">Bring questions, friction points, and patterns you're seeing. These are working sessions — the goal is to keep tightening the workflow together.</p>
+      </section>
+
+      <!-- Slide 13: Closing -->
+      <section class="closing">
+        <div class="eyebrow">The Front Door</div>
+        <h2>Meet them in the moment.</h2>
+        <p>The people reaching out to us are often in a fragile, hesitant moment. They have decided, today, to take a step.</p>
+        <p>Our job is to meet them there — quickly, warmly, and prepared.</p>
+        <p style="margin-top: 48px; color: var(--accent); font-family: Georgia, serif; font-size: 26px; letter-spacing: 0.05em;">Thank you for taking that seriously.</p>
+        <div class="footer-mark">WITHIN CENTER</div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: 'c/t',
+      transition: 'fade',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      width: 1280,
+      height: 800,
+      margin: 0.08,
+      minScale: 0.4,
+      maxScale: 1.6
+    });
+  </script>
+</body>
+</html>
